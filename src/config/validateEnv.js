@@ -1,6 +1,9 @@
 import { z } from 'zod';
+import { MESSAGE_ENCRYPTION_ALGORITHMS } from '../utils/enums/enviromentEnums.js';
 import dotenv from 'dotenv';
 dotenv.config();
+
+
 
 const envSchema = z.object({
     // App settings
@@ -37,6 +40,13 @@ const envSchema = z.object({
 
     // File uploads
     MAX_FILE_SIZE_MB: z.string().default('10'),
+
+    // Hash
+    HASH_PASSWORD_ROUNDS: z.string().default('12'),
+
+    // Encryption
+    MESSAGE_ENCRYPTION_KEY: z.string().min(32, 'Encryption key must be at least 32 characters'),
+    MESSAGE_ENCRYPTION_ALGORITHM: z.enum(MESSAGE_ENCRYPTION_ALGORITHMS).default('aes-256-gcm'),
 });
 
 const parsedEnv = envSchema.safeParse(process.env);

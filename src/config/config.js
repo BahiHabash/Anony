@@ -36,6 +36,13 @@ const config = {
     // File uploads
     MAX_FILE_SIZE_MB: parseInt(env.MAX_FILE_SIZE_MB, 10),
 
+    // Hash
+    HASH_PASSWORD_ROUNDS: parseInt(env.HASH_PASSWORD_ROUNDS, 10),
+
+    // Encryption
+    MESSAGE_ENCRYPTION_KEY: env.MESSAGE_ENCRYPTION_KEY,
+    MESSAGE_ENCRYPTION_ALGORITHM: env.MESSAGE_ENCRYPTION_ALGORITHM,
+
     // Third-party APIs (e.g., Firebase, AWS, Stripe)
     // Logging & Debug
     // Redis 
