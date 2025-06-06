@@ -15,8 +15,7 @@ const envSchema = z.object({
     // JWT
     JWT_SECRET: z.string(),
     JWT_EXPIRES_IN: z.string().default('1d'),
-    JWT_REFRESH_SECRET: z.string(),
-    JWT_REFRESH_EXPIRES_IN: z.string().default('7d'),
+    REFRESH_EXPIRES_IN: z.string().default('7d'),
 
     // Cookies
     COOKIE_SECRET: z.string(),
