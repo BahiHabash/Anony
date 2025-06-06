@@ -12,10 +12,10 @@ const envSchema = z.object({
     MONGO_URI: z.string().url(),
     DB_NAME: z.string().default('app_db'),
 
-    // JWT
-    JWT_SECRET: z.string(),
-    JWT_EXPIRES_IN: z.string().default('1d'),
-    REFRESH_EXPIRES_IN: z.string().default('7d'),
+    // Tokens
+    ACCESS_TOKEN_SECRET: z.string(),
+    ACCESS_TOKEN_EXPIRES_IN: z.string().default('1d'),
+    REFRESH_TOKEN_EXPIRES_IN: z.string().default('7d'),
 
     // Cookies
     COOKIE_SECRET: z.string(),
