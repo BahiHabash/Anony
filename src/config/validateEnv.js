@@ -8,7 +8,8 @@ dotenv.config();
 const envSchema = z.object({
     // App settings
     PORT: z.string().default('5000'),
-    NODE_ENV: z.enum(['development', 'production', 'test']).default('development'),
+    NODE_ENV: z.enum(['development', 'production', 'test']).default('development').transform(val => val.trim()),
+
     BASE_URL: z.string().optional(),
 
     // Database

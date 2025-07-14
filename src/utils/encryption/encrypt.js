@@ -18,7 +18,7 @@ import config from '../../config/config.js';
  * const encrypted = encryptMessage("Hello world");
  */
 function encryptMessage(message = '') {
-
+    
     const iv = crypto.randomBytes(12); // 12 bytes IV for GCM
     const cipher = crypto.createCipheriv(
         config.MESSAGE_ENCRYPTION_ALGORITHM,

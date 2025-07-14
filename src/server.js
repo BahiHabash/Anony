@@ -1,7 +1,9 @@
 import config from './config/config.js';
 import connectDB from './db/connect.js';
 import createApp from './app.js';
+import express from 'express';
 import chalk from 'chalk';
+
 
 
 let server = null;
@@ -23,9 +25,9 @@ process.on('unhandledRejection', (err) => {
 
 
 async function startServer() {
-    try {
+    try { 
         await connectDB();
-        const app = createApp();
+        const app = createApp(express);
         
         server = app.listen(config.PORT, () => {
             console.log(chalk.green.bold(`✅ Server running at http://localhost:${config.PORT}`));
