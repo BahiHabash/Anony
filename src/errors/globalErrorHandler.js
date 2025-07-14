@@ -35,7 +35,7 @@ const sendDevError = (res, err) => {
 };
 
 const sendProdError = (res, err) => {
-    // Operational error
+    // Operational error 
     if (err.isOperational) {
         res.status(err.statusCode).json({
             status: err.status,
@@ -53,7 +53,7 @@ const sendProdError = (res, err) => {
     }
 };
 
-export const globalErrorHandler = (err, req, res) => {
+const globalErrorHandler = (err, req, res, next) => {
     // Set default values if not already set
     err.statusCode ??= StatusCodes.INTERNAL_SERVER_ERROR;
     err.status ??= 'error';
@@ -62,7 +62,7 @@ export const globalErrorHandler = (err, req, res) => {
     if (process.env.NODE_ENV === 'development') {
         sendDevError(res, err);
     } else if (process.env.NODE_ENV === 'production') {
-        let error = Object.assign({}, err);
+        let error = { ...err, message: err.message };
 
         if (err.name === 'CastError') {
             error = handleCastErrorDB(error);
