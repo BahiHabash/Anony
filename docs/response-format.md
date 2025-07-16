@@ -1,11 +1,13 @@
 # JSON Response Structure
 
-| Type                | Status  | Includes                    | Env              |
-| ------------------- | ------- | --------------------------- | ---------------- | --- |
-| Success             | success | `message`, `data`           | All environments |
-| Fail (client error) | fail    | `message`                   | Production       |
-| Error (server)      | error   | `message`                   | Prod             |
-| Error (server)      | error   | `message`, `error`, `stack` | Dev              |     |
+
+| Type             | Status   | Includes            | Env        |
+|------------------|----------|---------------------|----------------|
+| Success          | success  | `message`, `data`              | All environments |
+| Fail (client error) | fail     | `message`    | Production      |
+| Error (server)   | error    | `message`           | Prod           |
+| Error (server)   | error    | `message`, `error`, `stack`  | Dev    |        |
+
 
 ---
 
@@ -21,8 +23,7 @@ res.status(statusCode).json({
 
 - `status`: Always `"success"` on successful operations.
 - `data`: Contains the actual response payload.
-- `message`: Some Info and Guides if need
-
+- `message`: Some info or guides if needed.
 ---
 
 ## 🔴 Error Response – Development Environment
@@ -52,7 +53,7 @@ res.status(statusCode).json({
 ```js
 res.status(statusCode).json({
     status,
-    message,
+    message
 });
 ```
 
