@@ -12,9 +12,11 @@
 - Backend searches for the user by email.
 
 - If email not exists:
+
     - Return generic response with successful message.
 
 - If email is already verified:
+
     - Return `400 Bad Request` (or `409 Conflict`).
 
 - If user exists and email is **not verified**:

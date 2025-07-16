@@ -1,28 +1,27 @@
 # JSON Response Structure
 
-
-| Type             | Status   | Includes            | Env        |
-|------------------|----------|---------------------|----------------|
-| Success          | success  | `data`              | All environments |
-| Fail (client error) | fail     | `message`    | Production      |
-| Error (server)   | error    | `message`           | Prod           |
-| Error (server)   | error    | `message`, `error`, `stack`  | Dev    |        |
-
+| Type                | Status  | Includes                    | Env              |
+| ------------------- | ------- | --------------------------- | ---------------- | --- |
+| Success             | success | `message`, `data`           | All environments |
+| Fail (client error) | fail    | `message`                   | Production       |
+| Error (server)      | error   | `message`                   | Prod             |
+| Error (server)      | error   | `message`, `error`, `stack` | Dev              |     |
 
 ---
-
 
 ## 🟢 Successful Response (`200 OK`, `201 Created`, etc.)
 
 ```js
 res.status(statusCode).json({
     status: 'success',
-    data: {}
+    message: ''
+    data: {},
 });
 ```
 
 - `status`: Always `"success"` on successful operations.
 - `data`: Contains the actual response payload.
+- `message`: Some Info and Guides if need
 
 ---
 
@@ -35,7 +34,7 @@ res.status(statusCode).json({
     status,
     message,
     error,
-    stack
+    stack,
 });
 ```
 
@@ -53,7 +52,7 @@ res.status(statusCode).json({
 ```js
 res.status(statusCode).json({
     status,
-    message
+    message,
 });
 ```
 
@@ -64,11 +63,10 @@ res.status(statusCode).json({
 ```js
 res.status(500).json({
     status: 'error',
-    message: 'An unknown error occurred.'
+    message: 'An unknown error occurred.',
 });
 ```
 
 - Shows a generic error message for unexpected failures to avoid leaking internal details.
 
 ---
-
