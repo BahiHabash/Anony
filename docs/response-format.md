@@ -4,7 +4,7 @@
 | Type             | Status   | Includes            | Env        |
 |------------------|----------|---------------------|----------------|
 | Success          | success  | `data`              | All environments |
-| Fail (client error) | fail     | `message`    | Production      |
+| Fail (client error) | fail     | `message`    | Prod      |
 | Error (server)   | error    | `message`           | Prod           |
 | Error (server)   | error    | `message`, `error`, `stack`  | Dev    |        |
 
@@ -23,6 +23,21 @@ res.status(statusCode).json({
 
 - `status`: Always `"success"` on successful operations.
 - `data`: Contains the actual response payload.
+
+---
+
+## 🔴 Error Response – Production Environment
+
+### ⚠ Operational Error (Handled / Expected)
+
+```js
+res.status(statusCode).json({
+    status,
+    message
+});
+```
+
+- Safe to return to the client.
 
 ---
 
@@ -45,19 +60,6 @@ res.status(statusCode).json({
 - `stack`: Full stack trace for debugging.
 
 ---
-
-## 🔴 Error Response – Production Environment
-
-### ⚠ Operational Error (Handled / Expected)
-
-```js
-res.status(statusCode).json({
-    status,
-    message
-});
-```
-
-- Safe to return to the client.
 
 ### ❌ Programming / Unknown Error
 
